@@ -1,1 +1,9 @@
-# Uppgift-3
+import random as rand
+i = 0
+tal1 = rand.randint(1, 6)
+tal2 = rand.randint(1, 6)
+tal3 = rand.randint(1, 6)
+print(tal1, tal2, tal3)
+
+tal = input(" " "Talen?\n")
+gissning = tuple(int(tal) for tal in tal.split())
