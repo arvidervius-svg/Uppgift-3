@@ -1,5 +1,10 @@
-import random as rand
-i = 0
+nivå = int(input("Vilken svårighetsgrad vill du ha?"))
+if nivå == 1:
+    
+elif nivå == 2:
+    import random as rand
+i = 1
+a = 0
 tal1 = rand.randint(1, 6)
 tal2 = rand.randint(1, 6)
 tal3 = rand.randint(1, 6)
@@ -8,10 +13,7 @@ print(tal1, tal2, tal3, tal4)
 while i != 13:
     tal = input(" " "Talen?\n")
     gissning = tuple(int(tal) for tal in tal.split())
-    if i == 12:
-        print("\n Du förlorade")
-        break
-
+    
     if gissning[0] == tal1:
         print("✔", end ="")
     elif gissning[0] == tal2:
@@ -45,12 +47,16 @@ while i != 13:
     elif gissning[3] == tal3:
         print("✔", end ="")
     
+    if i == 12:
+        print("\n Du förlorade, slut på gissningar.")
+        break
     if gissning == (tal1, tal2, tal3, tal4):
         print("\n Du vann")
         break
-    elif i == 12:
-        print("\n Du förlorade")
-        break
-    i += 1
-    print(f"\n Antal gissningar: {i}")
     
+    i += 1
+    a += 1
+    print(f"\n Antal gissningar: {a}")
+    
+
+
