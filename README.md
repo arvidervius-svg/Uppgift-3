@@ -7,3 +7,22 @@ print(tal1, tal2, tal3)
 
 tal = input(" " "Talen?\n")
 gissning = tuple(int(tal) for tal in tal.split())
+
+if gissning[0] == tal1:
+    print("✔", end ="")
+elif gissning[0] == tal2:
+    print("X", end ="")
+elif gissning[0] == tal3:
+    print("X", end ="")
+if gissning[1] == tal1:
+    print("X", end ="")
+elif gissning[1] == tal2:
+    print("✔", end ="")
+elif gissning[1] == tal3:
+    print("X", end ="")
+if gissning[2] == tal1:
+    print("X", end ="")
+elif gissning[2] == tal2:
+    print("X", end ="")
+elif gissning[2] == tal3:
+    print("✔", end ="")
