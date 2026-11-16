@@ -33,3 +33,11 @@ elif gissning[2] == tal3:
     print("✔", end ="")
 elif gissning[2] == tal4:
     print("X", end ="")
+if gissning[3] == tal1:
+    print("X", end ="")
+elif gissning[3] == tal2:
+    print("X", end ="")
+elif gissning[3] == tal3:
+    print("X", end ="")
+elif gissning[3] == tal4:
+    print("✔", end ="")
