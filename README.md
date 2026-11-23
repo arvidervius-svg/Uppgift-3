@@ -7,6 +7,8 @@ if nivå == 1:
     a = 0
     tal1 = rand.sample(range(1, 7), 4)
     print(tal1)
+    talen = (tal1[0], tal1[1], tal1[2], tal1[3])
+    print(*talen)
     while i != 13:
         svar = input("\nTalen?\n")
         gissning = [int(x) for x in svar.split()]
@@ -20,6 +22,12 @@ if nivå == 1:
         if gissning[3] == tal1[3]:
             print("✔", end ="")
         
+        if gissning == tal1:
+            print("\n Du vann")
+            break
+        if i == 12:
+            print("\n Du förlorade, slut på gissningar.")
+            break
         i += 1  
     
 if nivå == 2:
