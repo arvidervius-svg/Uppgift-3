@@ -6,7 +6,7 @@ if nivå == 1:
     i = 1
     a = 0
     tal1 = rand.sample(range(1, 7), 4)
-    print(tal1)
+    print(f"{tal1[0]} {tal1[1]} {tal1[2]} {tal1[3]}")
     while i != 13:
         svar = input(f"\nTalen?, försök {i}/12\n")
         gissning = [int(x) for x in svar.split()]
@@ -43,7 +43,7 @@ if nivå == 1:
             print("X", end ="")
         if gissning[3] == tal1[2]:
             print("X", end ="")
-            
+
         
         i += 1  
     
