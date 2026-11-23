@@ -3,102 +3,70 @@ import random as rand
 nivå = int(input("Vilken svårighetsgrad vill du ha? (1 eller 2)\n"))
 
 if nivå == 1:
-    i = 1
+    i = 0
     a = 0
     tal1 = rand.sample(range(1, 7), 4)
-    print(f"{tal1[0]} {tal1[1]} {tal1[2]} {tal1[3]}")
+    print(*tal1)
+    
     while i != 13:
-        svar = input(f"\nTalen?, försök {i}/12\n")
+        svar = input("\nTalen?\n")
         gissning = [int(x) for x in svar.split()]
         
-        if gissning[0] == tal1[0]:  
-            print("✔", end ="")
-        if gissning[0] == tal1[1]:  
-            print("X", end ="")
-        if gissning[0] == tal1[2]:  
-            print("X", end ="")
-        if gissning[0] == tal1[3]:  
-            print("X", end ="")
-        if gissning[1] == tal1[1]:
-            print("✔", end ="")
-        if gissning[1] == tal1[0]:
-            print("X", end ="")
-        if gissning[1] == tal1[2]:
-            print("X", end ="")
-        if gissning[1] == tal1[3]:
-            print("X", end ="")
-        if gissning[2] == tal1[2]:
-            print("✔", end ="")
-        if gissning[2] == tal1[0]:
-            print("X", end ="")
-        if gissning[2] == tal1[1]:
-            print("X", end ="")
-        if gissning[2] == tal1[3]:
-            print("X", end ="")
-        if gissning[3] == tal1[3]:
-            print("✔", end ="")
-        if gissning[3] == tal1[0]:
-            print("X", end ="")
-        if gissning[3] == tal1[1]:
-            print("X", end ="")
-        if gissning[3] == tal1[2]:
-            print("X", end ="")
-
-        
-        i += 1  
-    
-if nivå == 2:
-    i = 1
-    a = 0
-    tal1 = rand.randint(1, 8) # Ändrade till 1-8 så nivå 2 blir svårare!
-    tal2 = rand.randint(1, 8)
-    tal3 = rand.randint(1, 8)
-    tal4 = rand.randint(1, 8)
-    print(tal1, tal2, tal3, tal4)
-    while i != 13:
-        tal = input(" " "Talen?\n")
-        gissning = tuple(int(tal) for tal in tal.split())
-        
-        if gissning[0] == tal1:
-            print("✔", end ="")
-        elif gissning[0] == tal2:
-            print("X", end ="")
-        elif gissning[0] == tal3:
-            print("X", end ="")
-        elif gissning[0] == tal4:
-            print("X", end ="")
-        if gissning[1] == tal2:
-            print("✔", end ="")
-        elif gissning[1] == tal1:
-            print("X", end ="")
-        elif gissning[1] == tal3:
-            print("X", end ="")
-        elif gissning[1] == tal4:
-            print("X", end ="")
-        if gissning[2] == tal3:
-            print("✔", end ="")
-        elif gissning[2] == tal1:
-            print("X", end ="")
-        elif gissning[2] == tal2:
-            print("X", end ="")
-        elif gissning[2] == tal4:
-            print("X", end ="")
-        if gissning[3] == tal4:
-            print("✔", end ="")
-        elif gissning[3] == tal1:
-            print("X", end ="")
-        elif gissning[3] == tal2:
-            print("X", end ="")
-        elif gissning[3] == tal3:
-            print("X", end ="")
-        
-        if gissning == (tal1, tal2, tal3, tal4):
-            print("\n Du vann")
-            break
-        if i == 12:
-            print("\n Du förlorade, slut på gissningar.")
-            break
+        for pos in range(4):
+            if gissning[pos] == tal1[pos]:
+                print("✔", end="")
+            elif gissning[pos] in tal1:
+                print("X", end="")
         
         i += 1
         a += 1
-        print(f"\n Antal gissningar: {a}")
+            
+        
+        if gissning == tal1:
+            print("\nDu vann!")
+            break
+        if i == 12:
+            print("\nDu förlorade, du har gissat 12 gånger.")
+            break
+            print(f"\nAntal gissningar: {i}")
+            
+        print(f"\nAntal gissningar: {a}")
+        
+
+
+elif nivå == 2:
+    i = 1
+    a = 0
+    facit = [rand.randint(1, 8) for _ in range(4)]
+    print(*facit)
+    
+    while i != 13:
+        tal = input("\nTalen?\n")
+        gissning = [int(x) for x in tal.split()]
+        
+        facit_kvar = facit.copy()
+        gissning_kvar = gissning.copy()
+        
+        for pos in range(4):
+            if gissning[pos] == facit[pos]:
+                print("✔", end="")
+                facit_kvar[pos] = None
+                gissning_kvar[pos] = None
+                
+        for pos in range(4):
+            if gissning_kvar[pos] is not None and gissning_kvar[pos] in facit_kvar:
+                print("X", end="")
+                facit_kvar.remove(gissning_kvar[pos])
+        
+        print(f"\nAntal gissningar: {a}")
+        if gissning == facit:
+            print("\nDu vann!")
+            break
+        if i == 12:
+            print("\nDu förlorade, slut på gissningar.")
+            break
+        
+        
+        i += 1
+        a += 1
+        
